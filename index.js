@@ -1,3 +1,9 @@
-let a = 0;
+var o = {prop: 37};
 
-console.log(a);
+function independent() {
+  return this.prop;
+}
+
+o.f = independent;
+
+console.log(o.f()); // logs 37
