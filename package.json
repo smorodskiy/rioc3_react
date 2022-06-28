@@ -1,0 +1,26 @@
+{
+  "name": "rioc3_react",
+  "version": "1.0.0",
+  "description": "Collecting ip devices",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smorodskiy/rioc3_react.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smorodskiy/rioc3_react/issues"
+  },
+  "homepage": "https://github.com/smorodskiy/rioc3_react#readme",
+  "devDependencies": {
+    "eslint": "^8.18.0",
+    "eslint-plugin-react": "^7.30.1"
+  },
+  "dependencies": {
+    "eslint-plugin-babel": "^5.3.1"
+  }
+}
