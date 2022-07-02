@@ -10,15 +10,9 @@ import './app.css'
 const App = () => {
 
   const data = [
-    {label: 'This data is very important', important: true},
-    {label: 'This data is very important', important: false},
-    {label: 'This data is very important', important: false},
-    {label: 'This data is very important', important: false},
-    {label: 'This data is very important', important: false},
-    {label: 'This data is very important', important: false},
-    {label: 'This data is very important', important: false},
-    {label: 'This data is very important', important: false},
-    {label: 'This data is very important', important: false}
+    {label: 'This data is very important', important: true, id: '3'},
+    {label: 'This data is very important', important: false, id: '1'},
+    {label: 'This data is very important', important: false, id: '7'}
   ];
 
   return (    
