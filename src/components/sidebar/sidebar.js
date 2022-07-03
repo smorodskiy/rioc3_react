@@ -15,7 +15,7 @@ const Sidemenu = () => {
     overflow: "hidden",
   };
 
-
+  const viewHeight = window.outerHeight;
   const [expand, setExpand] = React.useState(true);
   return (
 
@@ -23,6 +23,7 @@ const Sidemenu = () => {
       style={{ display: "flex", flexDirection: "column" }}
       width={expand ? 260 : 56}
       collapsible
+      
     >
 
       <Sidenav.Header>
@@ -42,7 +43,7 @@ const Sidemenu = () => {
             {/* icon={<Group />} */}
             <Nav.Item eventKey="2">База</Nav.Item>
             <Nav.Menu
-              eventKey="4"
+              eventKey="3"
               trigger="hover"
               title="Інше"
               // icon={<Magic />}

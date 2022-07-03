@@ -47,52 +47,79 @@ const rows = [
   network_prefix: 24, place_name: 'File server', location: 'Server room',
   mac: 'FF:FF:FF:FF:FF', hardware_type: 'PC', description: 'DN-3'
   },
-  { id: 1, ip: '10.41.30.4', network: '10.41.30.1',  subnet_mask: '255.255.255.0',
+  { id: 5, ip: '10.41.30.4', network: '10.41.30.1',  subnet_mask: '255.255.255.0',
   network_prefix: 24, place_name: 'File server', location: 'Server room',
   mac: 'FF:FF:FF:FF:FF', hardware_type: 'PC', description: 'DN-3'
   },
-  { id: 2, ip: '10.41.30.4', network: '10.41.30.1',  subnet_mask: '255.255.255.0',
+  { id: 6, ip: '10.41.30.4', network: '10.41.30.1',  subnet_mask: '255.255.255.0',
   network_prefix: 24, place_name: 'File server', location: 'Server room',
   mac: 'FF:FF:FF:FF:FF', hardware_type: 'PC', description: 'DN-3'
   },
-  { id: 3, ip: '10.41.30.4', network: '10.41.30.1',  subnet_mask: '255.255.255.0',
+  { id: 7, ip: '10.41.30.4', network: '10.41.30.1',  subnet_mask: '255.255.255.0',
   network_prefix: 24, place_name: 'File server', location: 'Server room',
   mac: 'FF:FF:FF:FF:FF', hardware_type: 'PC', description: 'DN-3'
   },
-  { id: 4, ip: '10.41.30.4', network: '10.41.30.1',  subnet_mask: '255.255.255.0',
+  { id: 8, ip: '10.41.30.4', network: '10.41.30.1',  subnet_mask: '255.255.255.0',
   network_prefix: 24, place_name: 'File server', location: 'Server room',
   mac: 'FF:FF:FF:FF:FF', hardware_type: 'PC', description: 'DN-3'
-  },  { id: 1, ip: '10.41.30.4', network: '10.41.30.1',  subnet_mask: '255.255.255.0',
-  network_prefix: 24, place_name: 'File server', location: 'Server room',
-  mac: 'FF:FF:FF:FF:FF', hardware_type: 'PC', description: 'DN-3'
-  },
-  { id: 2, ip: '10.41.30.4', network: '10.41.30.1',  subnet_mask: '255.255.255.0',
+  },  
+  { id: 9, ip: '10.41.30.4', network: '10.41.30.1',  subnet_mask: '255.255.255.0',
   network_prefix: 24, place_name: 'File server', location: 'Server room',
   mac: 'FF:FF:FF:FF:FF', hardware_type: 'PC', description: 'DN-3'
   },
-  { id: 3, ip: '10.41.30.4', network: '10.41.30.1',  subnet_mask: '255.255.255.0',
+  { id: 10, ip: '10.41.30.4', network: '10.41.30.1',  subnet_mask: '255.255.255.0',
   network_prefix: 24, place_name: 'File server', location: 'Server room',
   mac: 'FF:FF:FF:FF:FF', hardware_type: 'PC', description: 'DN-3'
   },
-  { id: 4, ip: '10.41.30.4', network: '10.41.30.1',  subnet_mask: '255.255.255.0',
+  { id: 11, ip: '10.41.30.4', network: '10.41.30.1',  subnet_mask: '255.255.255.0',
   network_prefix: 24, place_name: 'File server', location: 'Server room',
   mac: 'FF:FF:FF:FF:FF', hardware_type: 'PC', description: 'DN-3'
-  },  { id: 1, ip: '10.41.30.4', network: '10.41.30.1',  subnet_mask: '255.255.255.0',
-  network_prefix: 24, place_name: 'File server', location: 'Server room',
-  mac: 'FF:FF:FF:FF:FF', hardware_type: 'PC', description: 'DN-3'
-  },
-  { id: 2, ip: '10.41.30.4', network: '10.41.30.1',  subnet_mask: '255.255.255.0',
+  },  
+  { id: 12, ip: '10.41.30.4', network: '10.41.30.1',  subnet_mask: '255.255.255.0',
   network_prefix: 24, place_name: 'File server', location: 'Server room',
   mac: 'FF:FF:FF:FF:FF', hardware_type: 'PC', description: 'DN-3'
   },
-  { id: 3, ip: '10.41.30.4', network: '10.41.30.1',  subnet_mask: '255.255.255.0',
+  { id: 13, ip: '10.41.30.4', network: '10.41.30.1',  subnet_mask: '255.255.255.0',
   network_prefix: 24, place_name: 'File server', location: 'Server room',
   mac: 'FF:FF:FF:FF:FF', hardware_type: 'PC', description: 'DN-3'
   },
-  { id: 4, ip: '10.41.30.4', network: '10.41.30.1',  subnet_mask: '255.255.255.0',
+  { id: 15, ip: '10.41.30.4', network: '10.41.30.1',  subnet_mask: '255.255.255.0',
   network_prefix: 24, place_name: 'File server', location: 'Server room',
   mac: 'FF:FF:FF:FF:FF', hardware_type: 'PC', description: 'DN-3'
   },
+  { id: 16, ip: '10.41.30.4', network: '10.41.30.1',  subnet_mask: '255.255.255.0',
+  network_prefix: 24, place_name: 'File server', location: 'Server room',
+  mac: 'FF:FF:FF:FF:FF', hardware_type: 'PC', description: 'DN-3'
+  },
+  { id: 17, ip: '10.41.30.4', network: '10.41.30.1',  subnet_mask: '255.255.255.0',
+  network_prefix: 24, place_name: 'File server', location: 'Server room',
+  mac: 'FF:FF:FF:FF:FF', hardware_type: 'PC', description: 'DN-3'
+  },
+  { id: 18, ip: '10.41.30.4', network: '10.41.30.1',  subnet_mask: '255.255.255.0',
+  network_prefix: 24, place_name: 'File server', location: 'Server room',
+  mac: 'FF:FF:FF:FF:FF', hardware_type: 'PC', description: 'DN-3'
+  },
+  { id: 19, ip: '10.41.30.4', network: '10.41.30.1',  subnet_mask: '255.255.255.0',
+  network_prefix: 24, place_name: 'File server', location: 'Server room',
+  mac: 'FF:FF:FF:FF:FF', hardware_type: 'PC', description: 'DN-3'
+  },
+  { id: 20, ip: '10.41.30.4', network: '10.41.30.1',  subnet_mask: '255.255.255.0',
+  network_prefix: 24, place_name: 'File server', location: 'Server room',
+  mac: 'FF:FF:FF:FF:FF', hardware_type: 'PC', description: 'DN-3'
+  },
+  { id: 21, ip: '10.41.30.4', network: '10.41.30.1',  subnet_mask: '255.255.255.0',
+  network_prefix: 24, place_name: 'File server', location: 'Server room',
+  mac: 'FF:FF:FF:FF:FF', hardware_type: 'PC', description: 'DN-3'
+  },
+  { id: 22, ip: '10.41.30.4', network: '10.41.30.1',  subnet_mask: '255.255.255.0',
+  network_prefix: 24, place_name: 'File server', location: 'Server room',
+  mac: 'FF:FF:FF:FF:FF', hardware_type: 'PC', description: 'DN-3'
+  },
+  { id: 23, ip: '10.41.30.4', network: '10.41.30.1',  subnet_mask: '255.255.255.0',
+  network_prefix: 24, place_name: 'File server', location: 'Server room',
+  mac: 'FF:FF:FF:FF:FF', hardware_type: 'PC', description: 'DN-3'
+  },
+
 
 ];
 
@@ -100,13 +127,15 @@ export default function DataTable() {
   return (
     <div className='data-table'>
       <Table
-      height={400}
+      // height={400}
+      autoHeight={true}
       data={rows}
       onRowClick={data => {
         console.log(data);
       }}
+      onSortColumn={(sortColumn, sortType) => { console.log(sortColumn, sortType); }}
     >
-      <Column width={70} align="center" fixed>
+      <Column sortable width={70} align="center" fixed>
         <HeaderCell>ID</HeaderCell>
         <Cell dataKey="id" />
       </Column>
@@ -131,12 +160,12 @@ export default function DataTable() {
         <Cell dataKey="network_prefix" />
       </Column>
 
-      <Column width={200}>
+      <Column flexGrow={2}>
         <HeaderCell>Place name</HeaderCell>
         <Cell dataKey="place_name" />
       </Column>
 
-      <Column width={200}>
+      <Column flexGrow={2}>
         <HeaderCell>Location</HeaderCell>
         <Cell dataKey="location" />
       </Column>

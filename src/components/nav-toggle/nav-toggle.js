@@ -17,9 +17,9 @@ const NavToggle = ({ expand, onChange }) => {
             <Nav.Menu
               placement="topStart"
               trigger="click"
-              renderTitle={children => {
-                // return <Cog style={iconStyles} />;
-              }}
+              // renderTitle={children => {
+              //   return <Cog style={iconStyles} />;
+              // }}
             >
               <Nav.Item>Help</Nav.Item>
               <Nav.Item>Settings</Nav.Item>
