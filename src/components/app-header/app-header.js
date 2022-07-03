@@ -5,8 +5,17 @@ const AppHeader = () => {
     return (
 
         <div className="app-header d-flex">
-            <h1>Igor Smorodsky</h1>
-            <h2>5 posts, liked 0</h2>
+            <ul>
+                <li>
+                    Головна
+                </li>
+                <li>
+                    База
+                </li>
+                <li>
+                    Профиль
+                </li>
+            </ul>
         </div>
 
     )

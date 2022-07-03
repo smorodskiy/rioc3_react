@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart, faHeartBroken, faHeartCircleBolt, faStar, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faStar, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
 import './post-list-item.css';
 

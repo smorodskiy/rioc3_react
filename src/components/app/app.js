@@ -1,30 +1,29 @@
 import React from "react";
-import AppHeader from "../app-header";
-import SearchPanel from "../search-panel";
-import PostStatusFilter from "../post-status-filter";
-import PostList from "../post-list";
-import PostAddForm from "../post-add-form";
+import { Container, Header } from "rsuite";
+import Sidemenu from "../sidebar/sidebar";
+import IpList from "../ip-list";
+// import AppHeader from "../app-header";
+// import SearchPanel from "../search-panel";
+// import PostStatusFilter from "../post-status-filter";
+// import PostList from "../post-list";
+// import PostAddForm from "../post-add-form";
 
-import './app.css'
+// import {  LogoAnalytics, Dashboard, Group, Magic} from '@rsuite/icons'
+import "rsuite/dist/rsuite.min.css";
+import "./app.css";
 
 const App = () => {
-
-  const data = [
-    {label: 'This data is very important', important: true, id: '3'},
-    {label: 'This data is very important', important: false, id: '1'},
-    {label: 'This data is very important', important: false, id: '7'}
-  ];
-
-  return (    
+  return (
     <div className="app">
-      <AppHeader />
-
-      <div className="search-panel d-flex">
-        <SearchPanel />
-        <PostStatusFilter/>
-      </div>
-        <PostList posts={data}/>
-        <PostAddForm/>
+      <Container>
+        <Sidemenu />
+        <Container>
+          <Header>
+            <h2>IP Адреси</h2>
+          </Header>
+          <IpList/>
+        </Container>
+      </Container>
     </div>
   );
 };
