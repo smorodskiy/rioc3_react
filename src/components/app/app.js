@@ -16,13 +16,20 @@ const App = () => {
   return (
     <div className="app">
       <Container>
+        {/* боковое меню */}
         <Sidemenu />
+
         <Container>
+        
+          {/* заголовок */}
           <Header>
             <h2>IP Адреси</h2>
           </Header>
+        
+          {/* список ip */}
           <IpList/>
         </Container>
+
       </Container>
     </div>
   );

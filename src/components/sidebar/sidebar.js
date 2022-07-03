@@ -1,33 +1,20 @@
 import React from "react";
-import {  Sidebar, Sidenav, Nav } from "rsuite";
+import { Sidebar, Sidenav, Nav } from "rsuite";
 import NavToggle from "../nav-toggle/nav-toggle";
 
-const Sidemenu = () => {
-    
-// Стили нужно перенести
-  const headerStyles = {
-    padding: 18,
-    fontSize: 16,
-    height: 56,
-    background: "#34c3ff",
-    color: " #fff",
-    whiteSpace: "nowrap",
-    overflow: "hidden",
-  };
+import './sidebar.css';
 
-  const viewHeight = window.outerHeight;
+const Sidemenu = () => {
+
   const [expand, setExpand] = React.useState(true);
   return (
-
     <Sidebar
-      style={{ display: "flex", flexDirection: "column" }}
+      className="sidebar"
       width={expand ? 260 : 56}
       collapsible
-      
     >
-
       <Sidenav.Header>
-        <div style={headerStyles}>
+        <div className="sidebar-header">
           {/* <LogoAnalytics style={{ fontSize: 20 }} /> */}
           <span style={{ marginLeft: 12 }}>РІОЦ-3</span>
         </div>
@@ -70,11 +57,9 @@ const Sidemenu = () => {
             </Nav.Menu>
           </Nav>
         </Sidenav.Body>
-
       </Sidenav>
-      
-      <NavToggle expand={expand} onChange={() => setExpand(!expand)} />
 
+      <NavToggle expand={expand} onChange={() => setExpand(!expand)} />
     </Sidebar>
   );
 };

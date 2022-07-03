@@ -1,15 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import { Nav, Navbar } from "rsuite";
 
-const NavToggle = ({ expand, onChange }) => {
-    const iconStyles = {
-        width: 56,
-        height: 56,
-        padding: 18,
-        lineHeight: '56px',
-        textAlign: 'center'
-      };
+import './nav-toggle.css'
 
+const NavToggle = ({ expand, onChange }) => {
     return (
       <Navbar appearance="subtle" className="nav-toggle">
         {/* <Navbar.Body> */}
@@ -17,9 +11,9 @@ const NavToggle = ({ expand, onChange }) => {
             <Nav.Menu
               placement="topStart"
               trigger="click"
-              // renderTitle={children => {
-              //   return <Cog style={iconStyles} />;
-              // }}
+              // menuStyle={}
+              title=""
+              // <Cog style={iconStyles} />
             >
               <Nav.Item>Help</Nav.Item>
               <Nav.Item>Settings</Nav.Item>
