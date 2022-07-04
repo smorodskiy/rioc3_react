@@ -419,13 +419,23 @@ const headCells = [
 ];
 
 // Заголовок таблицы
+// функциональный компонент
 function EnhancedTableHead(props) {
+  // вытягивание всех атрибутов их компомнента и деструктуризируем
   const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
 
+  // !!!!  и так, события могут всплывать снизу вверх, потому необходимо сделать запрос на фунцию родителя
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
+    // console.log(property);
+    // console.log(event);
   };
-
+  
+  const test = (event, property) => {
+    onRequestSort(event, property);
+    console.log(property);
+  }
+  
   return (
     <TableHead>
       <TableRow>
@@ -466,7 +476,9 @@ function EnhancedTableHead(props) {
   );
 }
 
+// проверка типов с помощью реакта
 EnhancedTableHead.propTypes = {
+  // количество выделенных - должно быть число, обязательно
   numSelected: PropTypes.number.isRequired,
   onRequestSort: PropTypes.func.isRequired,
   onSelectAllClick: PropTypes.func.isRequired,
