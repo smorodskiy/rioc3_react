@@ -421,7 +421,7 @@ const headCells = [
 // Заголовок таблицы
 function EnhancedTableHead(props) {
   const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
- 
+
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
   };
@@ -521,25 +521,27 @@ EnhancedTableToolbar.propTypes = {
 };
 
 export default function EnhancedTable() {
-
   // Состояния
   const [order, setOrder] = React.useState("asc");
-  const [orderBy, setOrderBy] = React.useState("id");
-  // Передача 
+  const [orderBy, setOrderBy] = React.useState("id");  
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
+  // Событие нажатия на Сортировку
   const handleRequestSort = (event, property) => {
+    console.log(`prop - ${property}, oB - ${orderBy}, o - ${order}`);
+
     const isAsc = orderBy === property && order === "asc";
     setOrder(isAsc ? "desc" : "asc");
     setOrderBy(property);
   };
 
+  // Событие нажатия на кнопку Выделить все
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.name);
+      const newSelecteds = rows.map((n) => n.id);
       setSelected(newSelecteds);
       return;
     }
@@ -547,26 +549,26 @@ export default function EnhancedTable() {
   };
 
   // Событие нажатие на строку в таблице(формируется массив из индексов выделенных элементов)
-  const handleClick = (event, name) => {
-    
-    console.log(selected);
-    const selectedIndex = selected.indexOf(name);
-
+  const handleClick = (event, id) => {
+    // поиск элемента в сохранненом списке Выделенных
+    const selectedIndex = selected.indexOf(id);
     let newSelected = [];
-
     if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
+      // Если в списке выделенных такого элемента еще нет, то добавляем
+      newSelected = newSelected.concat(selected, id);
     } else if (selectedIndex === 0) {
+      // Если элемент уже есть, и он первый в списке, убираем его
       newSelected = newSelected.concat(selected.slice(1));
     } else if (selectedIndex === selected.length - 1) {
+      // Если элемент есть и он последний в списке, убираем его
       newSelected = newSelected.concat(selected.slice(0, -1));
     } else if (selectedIndex > 0) {
+      // в любом другом случае когда индекс больше 0, удаляем его
       newSelected = newSelected.concat(
         selected.slice(0, selectedIndex),
         selected.slice(selectedIndex + 1)
       );
     }
-    // console.log(newSelected);
     setSelected(newSelected);
   };
 
@@ -583,7 +585,7 @@ export default function EnhancedTable() {
     setDense(event.target.checked);
   };
 
-  const isSelected = (name) => selected.indexOf(name) !== -1;
+  const isSelected = (id) => selected.indexOf(id) !== -1;
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
@@ -603,8 +605,9 @@ export default function EnhancedTable() {
             <EnhancedTableHead
               // количество выделенных строчек
               numSelected={selected.length}
-              // 
+              // тип сортировки от А до Я или Я до А
               order={order}
+              // айди колонки которую сортируем
               orderBy={orderBy}
               // Клик на кнопку "выделить все"
               onSelectAllClick={handleSelectAllClick}
@@ -625,7 +628,7 @@ export default function EnhancedTable() {
                   return (
                     <TableRow
                       hover
-                      // привязка к событию на клик, выполняется функция handleClick(событие, номер ячейки)
+                      // привязка к событию на клик на строке, выполняется функция handleClick(событие, номер ячейки)
                       onClick={(event) => handleClick(event, row.id)}
                       role="checkbox"
                       aria-checked={isItemSelected}
