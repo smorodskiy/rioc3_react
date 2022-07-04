@@ -1,33 +1,30 @@
-import * as React from "react";
-import { Cell, Column, HeaderCell } from "rsuite-table";
-import Table from "rsuite/Table";
+// import * as React from "react";
+
 import "./ip-list.css";
 
-const columns__ = [
-  { field: "id", headerName: "ID", width: 70 },
-  { field: "ip", headerName: "IP", width: 130 },
-  { field: "network", headerName: "Network", width: 130 },
-  { field: "subnet_mask", headerName: "Subnet mask", width: 130 },
-  {
-    field: "network_prefix",
-    editable: true,
-    headerName: "Prefix",
-    type: "number",
-    width: 90,
-  },
-  {
-    field: "place_name",
-    headerName: "place_name",
-    description: "This column has a value getter and is not sortable.",
-    sortable: false,
-    width: 160,
-    valueGetter: (params) => `${params.row.firstName || ""} ${params.row.lastName || ""}`,
-  },
-  { field: "location", headerName: "location", width: 130 },
-  { field: "mac", headerName: "mac", width: 130 },
-  { field: "hardware_type", headerName: "hardware_type", width: 130 },
-  { field: "description", headerName: "description", width: 130 },
-];
+import * as React from "react";
+import PropTypes from "prop-types";
+import { alpha } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TablePagination from "@mui/material/TablePagination";
+import TableRow from "@mui/material/TableRow";
+import TableSortLabel from "@mui/material/TableSortLabel";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Paper from "@mui/material/Paper";
+import Checkbox from "@mui/material/Checkbox";
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Switch from "@mui/material/Switch";
+import DeleteIcon from "@mui/icons-material/Delete";
+import FilterListIcon from "@mui/icons-material/FilterList";
+import { visuallyHidden } from "@mui/utils";
 
 const rows = [
   {
@@ -296,70 +293,396 @@ const rows = [
   },
 ];
 
-export default function DataTable() {
+function createData(
+  id,
+  ip,
+  network,
+  subnet_mask,
+  network_prefix,
+  place_name,
+  location,
+  mac,
+  hardware_type,
+  description
+) {
+  return {
+    id,
+    ip,
+    network,
+    subnet_mask,
+    network_prefix,
+    place_name,
+    location,
+    mac,
+    hardware_type,
+    description,
+  };
+}
+
+// const rows = [
+//   createData('Cupcake', 305, 3.7, 67, 4.3,0,0,0,0),
+//   createData('Cupcake', 305, 3.7, 67, 4.3,0,0,0,0)
+// ];
+
+function descendingComparator(a, b, orderBy) {
+  if (b[orderBy] < a[orderBy]) {
+    return -1;
+  }
+  if (b[orderBy] > a[orderBy]) {
+    return 1;
+  }
+  return 0;
+}
+
+function getComparator(order, orderBy) {
+  return order === "desc"
+    ? (a, b) => descendingComparator(a, b, orderBy)
+    : (a, b) => -descendingComparator(a, b, orderBy);
+}
+
+// This method is created for cross-browser compatibility, if you don't
+// need to support IE11, you can use Array.prototype.sort() directly
+function stableSort(array, comparator) {
+  const stabilizedThis = array.map((el, index) => [el, index]);
+  stabilizedThis.sort((a, b) => {
+    const order = comparator(a[0], b[0]);
+    if (order !== 0) {
+      return order;
+    }
+    return a[1] - b[1];
+  });
+  return stabilizedThis.map((el) => el[0]);
+}
+
+// Ячейки в заголовке таблицы(массив из объектов)
+const headCells = [
+  {
+    id: "id",
+    numeric: false,
+    disablePadding: true,
+    label: "ID",
+  },
+  {
+    id: "ip",
+    numeric: true,
+    disablePadding: false,
+    label: "IP",
+  },
+  {
+    id: "network",
+    numeric: true,
+    disablePadding: false,
+    label: "Network",
+  },
+  {
+    id: "subnet_mask",
+    numeric: true,
+    disablePadding: false,
+    label: "Subnet mask",
+  },
+  {
+    id: "network_prefix",
+    numeric: true,
+    disablePadding: false,
+    label: "Network prefix",
+  },
+  {
+    id: "place_name",
+    numeric: true,
+    disablePadding: false,
+    label: "Place name",
+  },
+  {
+    id: "location",
+    numeric: true,
+    disablePadding: false,
+    label: "Location",
+  },
+  {
+    id: "mac",
+    numeric: true,
+    disablePadding: false,
+    label: "MAC",
+  },
+  {
+    id: "hardware_type",
+    numeric: true,
+    disablePadding: false,
+    label: "Hardware type",
+  },
+  {
+    id: "description",
+    numeric: true,
+    disablePadding: false,
+    label: "Description",
+  },
+];
+
+// Заголовок таблицы
+function EnhancedTableHead(props) {
+  const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
+ 
+  const createSortHandler = (property) => (event) => {
+    onRequestSort(event, property);
+  };
+
   return (
-    <div className="data-table">
-      <Table
-        autoHeight={true}
-        data={rows}
-        onRowClick={(data) => {
-          console.log(data);
-        }}
-        onSortColumn={(sortColumn, sortType) => {
-          console.log(sortColumn, sortType);
-        }}
-      >
-        <Column sortable width={70} align="center" fixed>
-          <HeaderCell>ID</HeaderCell>
-          <Cell dataKey="id" />
-        </Column>
-
-        <Column width={120} fixed>
-          <HeaderCell>IP</HeaderCell>
-          <Cell dataKey="ip" />
-        </Column>
-
-        <Column width={120}>
-          <HeaderCell>Network</HeaderCell>
-          <Cell dataKey="network" />
-        </Column>
-
-        <Column width={120}>
-          <HeaderCell>Subnet mask</HeaderCell>
-          <Cell dataKey="subnet_mask" />
-        </Column>
-
-        <Column width={50}>
-          <HeaderCell>Prefix</HeaderCell>
-          <Cell dataKey="network_prefix" />
-        </Column>
-
-        <Column width={120}>
-          <HeaderCell>Place name</HeaderCell>
-          <Cell dataKey="place_name" />
-        </Column>
-
-        <Column flexGrow={2}>
-          <HeaderCell>Location</HeaderCell>
-          <Cell dataKey="location" />
-        </Column>
-        <Column width={120} fixed="right">
-          <HeaderCell>Action</HeaderCell>
-
-          <Cell>
-            {(rowData) => {
-              function handleAction() {
-                alert(`id:${rowData.id}`);
-              }
-              return (
-                <span>
-                  <a onClick={handleAction}> Edit </a> | <a onClick={handleAction}> Remove </a>
-                </span>
-              );
+    <TableHead>
+      <TableRow>
+        <TableCell padding="checkbox">
+          <Checkbox
+            color="primary"
+            indeterminate={numSelected > 0 && numSelected < rowCount}
+            checked={rowCount > 0 && numSelected === rowCount}
+            onChange={onSelectAllClick}
+            inputProps={{
+              "aria-label": "select all desserts",
             }}
-          </Cell>
-        </Column>
-      </Table>
-    </div>
+          />
+        </TableCell>
+        {headCells.map((headCell) => (
+          <TableCell
+            key={headCell.id}
+            align={headCell.numeric ? "right" : "left"}
+            padding={headCell.disablePadding ? "none" : "normal"}
+            sortDirection={orderBy === headCell.id ? order : false}
+          >
+            <TableSortLabel
+              active={orderBy === headCell.id}
+              direction={orderBy === headCell.id ? order : "asc"}
+              onClick={createSortHandler(headCell.id)}
+            >
+              {headCell.label}
+              {orderBy === headCell.id ? (
+                <Box component="span" sx={visuallyHidden}>
+                  {order === "desc" ? "sorted descending" : "sorted ascending"}
+                </Box>
+              ) : null}
+            </TableSortLabel>
+          </TableCell>
+        ))}
+      </TableRow>
+    </TableHead>
+  );
+}
+
+EnhancedTableHead.propTypes = {
+  numSelected: PropTypes.number.isRequired,
+  onRequestSort: PropTypes.func.isRequired,
+  onSelectAllClick: PropTypes.func.isRequired,
+  order: PropTypes.oneOf(["asc", "desc"]).isRequired,
+  orderBy: PropTypes.string.isRequired,
+  rowCount: PropTypes.number.isRequired,
+};
+
+const EnhancedTableToolbar = (props) => {
+  const { numSelected } = props;
+
+  return (
+    <Toolbar
+      sx={{
+        pl: { sm: 2 },
+        pr: { xs: 1, sm: 1 },
+        ...(numSelected > 0 && {
+          bgcolor: (theme) =>
+            alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity),
+        }),
+      }}
+    >
+      {numSelected > 0 ? (
+        <Typography sx={{ flex: "1 1 100%" }} color="inherit" variant="subtitle1" component="div">
+          {numSelected} selected
+        </Typography>
+      ) : (
+        <Typography sx={{ flex: "1 1 100%" }} variant="h6" id="tableTitle" component="div">
+          Nutrition
+        </Typography>
+      )}
+
+      {numSelected > 0 ? (
+        <Tooltip title="Delete">
+          <IconButton>
+            <DeleteIcon />
+          </IconButton>
+        </Tooltip>
+      ) : (
+        <Tooltip title="Filter list">
+          <IconButton>
+            <FilterListIcon />
+          </IconButton>
+        </Tooltip>
+      )}
+    </Toolbar>
+  );
+};
+
+EnhancedTableToolbar.propTypes = {
+  numSelected: PropTypes.number.isRequired,
+};
+
+export default function EnhancedTable() {
+
+  // Состояния
+  const [order, setOrder] = React.useState("asc");
+  const [orderBy, setOrderBy] = React.useState("id");
+  // Передача 
+  const [selected, setSelected] = React.useState([]);
+  const [page, setPage] = React.useState(0);
+  const [dense, setDense] = React.useState(false);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+
+  const handleRequestSort = (event, property) => {
+    const isAsc = orderBy === property && order === "asc";
+    setOrder(isAsc ? "desc" : "asc");
+    setOrderBy(property);
+  };
+
+  const handleSelectAllClick = (event) => {
+    if (event.target.checked) {
+      const newSelecteds = rows.map((n) => n.name);
+      setSelected(newSelecteds);
+      return;
+    }
+    setSelected([]);
+  };
+
+  // Событие нажатие на строку в таблице(формируется массив из индексов выделенных элементов)
+  const handleClick = (event, name) => {
+    
+    console.log(selected);
+    const selectedIndex = selected.indexOf(name);
+
+    let newSelected = [];
+
+    if (selectedIndex === -1) {
+      newSelected = newSelected.concat(selected, name);
+    } else if (selectedIndex === 0) {
+      newSelected = newSelected.concat(selected.slice(1));
+    } else if (selectedIndex === selected.length - 1) {
+      newSelected = newSelected.concat(selected.slice(0, -1));
+    } else if (selectedIndex > 0) {
+      newSelected = newSelected.concat(
+        selected.slice(0, selectedIndex),
+        selected.slice(selectedIndex + 1)
+      );
+    }
+    // console.log(newSelected);
+    setSelected(newSelected);
+  };
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
+  const handleChangeDense = (event) => {
+    setDense(event.target.checked);
+  };
+
+  const isSelected = (name) => selected.indexOf(name) !== -1;
+
+  // Avoid a layout jump when reaching the last page with empty rows.
+  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+
+  return (
+    // box - wrapper for comps
+    <Box sx={{ width: "100%" }}>
+      <Paper sx={{ width: "100%", mb: 2 }}>
+        <EnhancedTableToolbar numSelected={selected.length} />
+        <TableContainer>
+          <Table
+            sx={{ minWidth: 750 }}
+            aria-labelledby="tableTitle"
+            size={dense ? "small" : "medium"}
+          >
+            {/* Отрисовка заголовка таблицы */}
+            <EnhancedTableHead
+              // количество выделенных строчек
+              numSelected={selected.length}
+              // 
+              order={order}
+              orderBy={orderBy}
+              // Клик на кнопку "выделить все"
+              onSelectAllClick={handleSelectAllClick}
+              // клик на одну из кнопок сортировки
+              onRequestSort={handleRequestSort}
+              // количество колонок
+              rowCount={rows.length}
+            />
+            <TableBody>
+              {/* if you don't need to support IE11, you can replace the `stableSort` call with:
+                 rows.slice().sort(getComparator(order, orderBy)) */}
+              {stableSort(rows, getComparator(order, orderBy))
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .map((row, index) => {
+                  const isItemSelected = isSelected(row.id);
+                  const labelId = `enhanced-table-checkbox-${index}`;
+
+                  return (
+                    <TableRow
+                      hover
+                      // привязка к событию на клик, выполняется функция handleClick(событие, номер ячейки)
+                      onClick={(event) => handleClick(event, row.id)}
+                      role="checkbox"
+                      aria-checked={isItemSelected}
+                      tabIndex={-1}
+                      key={row.id}
+                      selected={isItemSelected}
+                    >
+                      <TableCell padding="checkbox">
+                        <Checkbox
+                          color="primary"
+                          checked={isItemSelected}
+                          inputProps={{
+                            "aria-labelledby": labelId,
+                          }}
+                        />
+                      </TableCell>
+                      <TableCell component="th" id={labelId} scope="row" padding="none">
+                        {row.id}
+                      </TableCell>
+                      <TableCell align="right">{row.ip}</TableCell>
+                      <TableCell align="right">{row.network}</TableCell>
+                      <TableCell align="right">{row.subnet_mask}</TableCell>
+                      <TableCell align="right">{row.network_prefix}</TableCell>
+                      <TableCell align="right">{row.place_name}</TableCell>
+                      <TableCell align="right">{row.location}</TableCell>
+                      <TableCell align="right">{row.mac}</TableCell>
+                      <TableCell align="right">{row.hardware_type}</TableCell>
+                      <TableCell align="right">{row.description}</TableCell>
+                    </TableRow>
+                  );
+                })}
+              {emptyRows > 0 && (
+                <TableRow
+                  style={{
+                    height: (dense ? 33 : 53) * emptyRows,
+                  }}
+                >
+                  <TableCell colSpan={6} />
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={rows.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+      </Paper>
+      <FormControlLabel
+        control={<Switch checked={dense} onChange={handleChangeDense} />}
+        label="Dense padding"
+      />
+    </Box>
   );
 }
