@@ -1,6 +1,7 @@
 import React from "react";
 import { Sidebar, Sidenav, Nav } from "rsuite";
-import NavToggle from "../nav-toggle/nav-toggle";
+import NavToggle from "./sidebar-toggle";
+import SettingsIcon from '@mui/icons-material/Settings';
 
 import './sidebar.css';
 
@@ -23,17 +24,17 @@ const Sidemenu = () => {
       <Sidenav expanded={expand} defaultOpenKeys={["3"]} appearance="subtle">
         <Sidenav.Body>
           <Nav>
-            {/* icon={<Dashboard />} */}
-            <Nav.Item eventKey="1" active>
+           
+            <Nav.Item icon={<SettingsIcon />} eventKey="1" active>
               Панель приладів
             </Nav.Item>
-            {/* icon={<Group />} */}
-            <Nav.Item eventKey="2">База</Nav.Item>
+            
+            <Nav.Item icon={<SettingsIcon />} eventKey="2">База</Nav.Item>
             <Nav.Menu
               eventKey="3"
               trigger="hover"
               title="Інше"
-              // icon={<Magic />}
+              icon={<SettingsIcon />}
               placement="rightStart"
             >
               <Nav.Item eventKey="3-1">Geo</Nav.Item>
@@ -46,7 +47,7 @@ const Sidemenu = () => {
               eventKey="4"
               trigger="hover"
               title="Налаштування"
-              // icon={<GearCircle />}
+              icon={<SettingsIcon />}
               placement="rightStart"
             >
               <Nav.Item eventKey="4-1">Applications</Nav.Item>

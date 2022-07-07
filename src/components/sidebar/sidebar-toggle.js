@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import { Nav, Navbar } from "rsuite";
 
-import './nav-toggle.css'
+import './sidebar-toggle.css'
 
 const NavToggle = ({ expand, onChange }) => {
     return (

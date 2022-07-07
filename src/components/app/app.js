@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Header } from "rsuite";
 import Sidemenu from "../sidebar/sidebar";
-import IpList from "../ip-list";
+import Table from "../app-table/app-table-content";
 // import AppHeader from "../app-header";
 // import SearchPanel from "../search-panel";
 // import PostStatusFilter from "../post-status-filter";
@@ -27,7 +27,7 @@ const App = () => {
           </Header>
         
           {/* список ip */}
-          <IpList/>
+          <Table/>
         </Container>
 
       </Container>
