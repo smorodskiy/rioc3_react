@@ -12,8 +12,6 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Checkbox from "@mui/material/Checkbox";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Switch from "@mui/material/Switch";
 import EnhancedTableToolbar from "./app-table-toolbar"
 import EnhancedTableHead from "./app-table-header";
 import IconButton from "@mui/material/IconButton";
@@ -91,7 +89,6 @@ export default function EnhancedTable() {
   const [orderBy, setOrderBy] = React.useState("id");  
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
-  const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   // Событие нажатия на Сортировку
@@ -146,9 +143,6 @@ export default function EnhancedTable() {
     setPage(0);
   };
 
-  const handleChangeDense = (event) => {
-    setDense(event.target.checked);
-  };
 
   const isSelected = (id) => selected.indexOf(id) !== -1;
 
@@ -164,7 +158,7 @@ export default function EnhancedTable() {
           <Table
             sx={{ minWidth: 750 }}
             aria-labelledby="tableTitle"
-            size={dense ? "small" : "medium"}
+            size="small"
           >
             {/* Отрисовка заголовка таблицы */}
             <EnhancedTableHead
@@ -231,20 +225,20 @@ export default function EnhancedTable() {
                     </TableRow>
                   );
                 })}
-              {emptyRows > 0 && (
+              {/* {emptyRows > 0 && (
                 <TableRow
                   style={{
-                    height: (dense ? 33 : 53) * emptyRows,
+                    // height: (dense ? 33 : 53) * emptyRows,
                   }}
                 >
                   <TableCell colSpan={6} />
                 </TableRow>
-              )}
+              )} */}
             </TableBody>
           </Table>
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
+          rowsPerPageOptions={[10, 25, 50, 100]}
           component="div"
           count={rows.length}
           rowsPerPage={rowsPerPage}
@@ -253,10 +247,6 @@ export default function EnhancedTable() {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Paper>
-      <FormControlLabel
-        control={<Switch checked={dense} onChange={handleChangeDense} />}
-        label="Dense padding"
-      />
     </Box>
   );
 }
