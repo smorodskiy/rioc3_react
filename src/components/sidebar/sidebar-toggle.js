@@ -23,7 +23,7 @@ const NavToggle = ({ expand, onChange }) => {
   
           <Nav pullRight>
             <Nav.Item onClick={onChange} style={{ width: 56, textAlign: 'center' }}>
-               {/* {expand ? <AngleLeft /> : <AngleRight />} */}
+               {expand ? "<" : ">"}               
             </Nav.Item>
           </Nav>
         {/* </Navbar.Body> */}
