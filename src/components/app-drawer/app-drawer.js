@@ -12,6 +12,7 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import { styled, useTheme } from "@mui/material/styles";
+import { Box } from "@mui/material";
 
 const drawerWidth = 240;
 
@@ -36,15 +37,6 @@ const closedMixin = (theme) => ({
   },
 });
 
-const DrawerHeader = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "flex-end",
-  padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
-  ...theme.mixins.toolbar,
-}));
-
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== "open" })(
   ({ theme, open }) => ({
     width: drawerWidth,
@@ -64,15 +56,24 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== "open" 
 
 export default function AppDrawer(props) {
   const theme = useTheme();
+  console.log(theme);
 
   return (
     <Drawer variant="permanent" open={props.open}>
-      <DrawerHeader>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "flex-end",
+          alignItems: "center",
+          //   padding: "0 1",
+          minHeight: "63px",
+        }}
+      >
         <IconButton onClick={props.func}>
           {theme.direction === "rtl" ? <ChevronRightIcon /> : <ChevronLeftIcon />}
         </IconButton>
-      </DrawerHeader>
-      <Divider />
+      </Box>
+      <Divider variant="middle" />
       <List>
         {["IP адреси", "Starred", "Send email", "Drafts"].map((text, index) => (
           <ListItem key={text} disablePadding sx={{ display: "block" }}>
@@ -97,7 +98,7 @@ export default function AppDrawer(props) {
           </ListItem>
         ))}
       </List>
-      <Divider />
+      <Divider variant="middle" />
       <List>
         {["All mail", "Trash", "Spam"].map((text, index) => (
           <ListItem key={text} disablePadding sx={{ display: "block" }}>
