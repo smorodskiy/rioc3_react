@@ -1,2 +1,2 @@
-import AppDrawer from './app-drawer'
+import AppDrawer from './drawer'
 export default AppDrawer;

@@ -12,8 +12,8 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Checkbox from "@mui/material/Checkbox";
-import EnhancedTableToolbar from "./app-table-toolbar"
-import EnhancedTableHead from "./app-table-header";
+import EnhancedTableToolbar from "./table-toolbar"
+import EnhancedTableHead from "./table-header";
 import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
 
@@ -114,7 +114,9 @@ export default function EnhancedTable() {
   const handleClick = (event, id) => {
     // поиск элемента в сохранненом списке Выделенных
     const selectedIndex = selected.indexOf(id);
+    
     let newSelected = [];
+
     if (selectedIndex === -1) {
       // Если в списке выделенных такого элемента еще нет, то добавляем
       newSelected = newSelected.concat(selected, id);

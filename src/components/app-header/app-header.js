@@ -25,20 +25,20 @@ const AppBar = styled(MuiAppBar, {
     }),
   }));
 
-export default function AppHeader(props) {
+export default function AppHeader({open, toggleMenu}) {
 
     return (
 
-        <AppBar position="fixed" open={props.open}>
+        <AppBar position="fixed" open={open}>
         <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
-            onClick={props.func}
+            onClick={toggleMenu}
             edge="start"
             sx={{
               marginRight: 5,
-              ...(props.open && { display: 'none' }),
+              ...(open && { display: 'none' }),
             }}
           >
             <MenuIcon />
