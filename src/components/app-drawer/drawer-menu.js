@@ -1,12 +1,16 @@
 import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 
-export function DrawerMenu({menu, buttons, open }) {
+export function DrawerMenu({menu, buttons, open, onClick }) {
+
+    function click() {
+      console.log('click');
+    }
 
     return (
       <List>
         {menu.map((text, index) => (
             
-          <ListItem key={text} disablePadding sx={{ display: "block" }}>
+          <ListItem key={text} disablePadding sx={{ display: "block" }} onClick={onClick}>
             <ListItemButton
               sx={{
                 minHeight: 48,
@@ -18,7 +22,7 @@ export function DrawerMenu({menu, buttons, open }) {
                 sx={{
                   minWidth: 0,
                   mr: open ? 3 : "auto",
-                  justifyContent: "center",
+                  justifyContent: "center",                  
                 }}
               >
                 {buttons[index]}
