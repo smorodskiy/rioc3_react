@@ -53,13 +53,18 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== "open" 
   })
 );
 
+const handleClick = (e) => {
+  console.log(e.target);
+}
 
 export default function AppDrawer({ open, toggleMenu }) {
   const theme = useTheme();
 
+
+
   return (
     <Drawer variant="permanent" open={open}>
-      
+      3
       <Box
         sx={{
           display: "flex",
@@ -78,8 +83,9 @@ export default function AppDrawer({ open, toggleMenu }) {
 
       <DrawerMenu
         open={open}
-        menu={["Головна", "IP адреси", "...", "..."]}
+        menu={["Головна", "IP адреси",]}
         buttons={[<HomeIcon />, <StorageIcon/>]}
+        onClick={handleClick}
       />
 
       <Divider variant="middle" />
@@ -88,6 +94,7 @@ export default function AppDrawer({ open, toggleMenu }) {
         open={open}
         menu={["Профіль", "Вихід",]}
         buttons={[<AccountBoxIcon/>, <LogoutIcon/>]}
+        onClick={handleClick}
       />
 
     </Drawer>
