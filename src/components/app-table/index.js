@@ -1,2 +1,2 @@
-import Table from './app-table-content'
+import Table from './table'
 export default Table;

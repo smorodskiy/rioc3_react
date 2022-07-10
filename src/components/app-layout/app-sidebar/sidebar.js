@@ -1,4 +1,3 @@
-import MuiDrawer from "@mui/material/Drawer";
 // import CssBaseline from '@mui/material/CssBaseline';
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
@@ -6,12 +5,14 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { styled, useTheme } from "@mui/material/styles";
 import { Box } from "@mui/material";
-import { DrawerMenu } from "./drawer-menu";
-
 import HomeIcon from '@mui/icons-material/Home';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import LogoutIcon from '@mui/icons-material/Logout';
 import StorageIcon from '@mui/icons-material/Storage';
+import MuiDrawer from "@mui/material/Drawer";
+
+import { SidebarMenu } from "./sidebar-menu";
+
 
 const drawerWidth = 240;
 
@@ -36,35 +37,36 @@ const closedMixin = (theme) => ({
   },
 });
 
-const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== "open" })(
+const SidebarStyled = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== "open" })(
   ({ theme, open }) => ({
     width: drawerWidth,
     flexShrink: 0,
     whiteSpace: "nowrap",
     boxSizing: "border-box",
+
     ...(open && {
       ...openedMixin(theme),
       "& .MuiDrawer-paper": openedMixin(theme),
     }),
+
     ...(!open && {
       ...closedMixin(theme),
       "& .MuiDrawer-paper": closedMixin(theme),
     }),
+    
   })
 );
 
-const handleClick = (e) => {
-  console.log(e.target);
-}
 
-export default function AppDrawer({ open, toggleMenu }) {
+export default function Sidebar({ open, toggleMenu }) {
   const theme = useTheme();
-
-
-
+  
+  const handleClick = (e) => {  
+    console.log(e.target);
+  }
+  
   return (
-    <Drawer variant="permanent" open={open}>
-      3
+    <SidebarStyled variant="permanent" open={open}>      
       <Box
         sx={{
           display: "flex",
@@ -79,24 +81,28 @@ export default function AppDrawer({ open, toggleMenu }) {
         </IconButton>
       </Box>
 
+      {/* разделитель */}
       <Divider variant="middle" />
 
-      <DrawerMenu
+      {/* Главное меню */}
+      <SidebarMenu
         open={open}
         menu={["Головна", "IP адреси",]}
         buttons={[<HomeIcon />, <StorageIcon/>]}
         onClick={handleClick}
       />
 
+      {/* разделитель */}
       <Divider variant="middle" />
 
-      <DrawerMenu
+      {/* Меню профиля */}
+      <SidebarMenu
         open={open}
         menu={["Профіль", "Вихід",]}
         buttons={[<AccountBoxIcon/>, <LogoutIcon/>]}
         onClick={handleClick}
       />
 
-    </Drawer>
+    </SidebarStyled>
   );
 }

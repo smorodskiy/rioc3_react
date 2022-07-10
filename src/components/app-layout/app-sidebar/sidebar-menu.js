@@ -1,6 +1,6 @@
 import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 
-export function DrawerMenu({menu, buttons, open, onClick }) {
+export function SidebarMenu({menu, buttons, open, onClick }) {
 
     function click() {
       console.log('click');
