@@ -9,7 +9,7 @@ import FilterListIcon from "@mui/icons-material/FilterList";
 import PropTypes from "prop-types";
 import { Box } from "@mui/system";
 
-const EnhancedTableToolbar = (props) => {
+export default function EnhancedTableToolbar(props) {
   const { numSelected } = props;
 
   return (
@@ -62,4 +62,3 @@ EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
 };
 
-export default EnhancedTableToolbar;

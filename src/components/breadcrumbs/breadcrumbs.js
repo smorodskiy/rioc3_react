@@ -34,7 +34,7 @@ export default function AppBreadcrumbs() {
 
         <StyledBreadcrumb
           // component="a"
-          href="#"
+          href="/ip"
           label="Головна"
           // icon={<HomeIcon fontSize="medium" />}
         />

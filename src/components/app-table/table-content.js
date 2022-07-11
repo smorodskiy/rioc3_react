@@ -34,17 +34,13 @@ function stableSort(array, comparator) {
 }
 
 export default function TableContent(props) {
-  const { rows, order, orderBy, page, rowsPerPage, selected } = props.sortProps;
+  const { rows, order, orderBy, page, 
+          rowsPerPage, selected, setSelected } = props.sortProps;
 
-  const [selecte, setSelected] = React.useState([]);
-  
-  //const [selected, setSelected] = React.useState([]);
   const isSelected = (id) => selected.indexOf(id) !== -1;
 
   // Событие нажатие на строку в таблице(формируется массив из индексов выделенных элементов)
   const handleClick = (event, id) => {
-    console.log('click');
-    console.log(selected);
     // поиск элемента в сохранненом списке Выделенных
     const selectedIndex = selected.indexOf(id);
 
@@ -66,8 +62,7 @@ export default function TableContent(props) {
         selected.slice(selectedIndex + 1)
       );
     }
-    console.log(newSelected);
-    // setSelected(newSelected);
+    setSelected(newSelected);
   };
 
   return (

@@ -10,7 +10,12 @@ export function SidebarMenu({menu, buttons, open, onClick }) {
       <List>
         {menu.map((text, index) => (
             
-          <ListItem key={text} disablePadding sx={{ display: "block" }} onClick={onClick}>
+          <ListItem 
+            key={text} 
+            disablePadding 
+            sx={{ display: "block" }} 
+            onClick={() => onClick()}>
+            
             <ListItemButton
               sx={{
                 minHeight: 48,
@@ -27,7 +32,10 @@ export function SidebarMenu({menu, buttons, open, onClick }) {
               >
                 {buttons[index]}
               </ListItemIcon>
-              <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+              <ListItemText 
+                primary={text} 
+                sx={{ opacity: open ? 1 : 0 }} 
+              />
             </ListItemButton>
           </ListItem>
         ))}

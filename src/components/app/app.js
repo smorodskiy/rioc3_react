@@ -3,6 +3,7 @@ import Table from "../app-table/table";
 import Box from "@mui/material/Box";
 import AppHeader from "../app-layout/app-header/app-header";
 import Sidebar from "../app-layout/app-sidebar";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import "./app.css";
 
@@ -15,7 +16,7 @@ export default function App() {
   // Открыть/Закрыть боковое меню
   function handleDrawerToggle() {
     setOpen(!open);
-  };
+  }
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -29,15 +30,14 @@ export default function App() {
 
       {/* контейнер с динамическим контентом */}
       <Box component="main" sx={{ flexGrow: 1, p: 3, pt: 11 }}>
-        
-        {/* Форма для редактирования/добавления */}
-        <EditForm/>
 
-        {/* Таблица с данными */}
-        <Table />
+        <Routes>
+          <Route path="/" element={<div>Home</div>} />
+          <Route path="ip" element={<Table />} />
+          <Route path="edit" element={<EditForm />} />          
+        </Routes>
 
       </Box>
-
     </Box>
   );
 }
