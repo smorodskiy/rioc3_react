@@ -2,8 +2,8 @@ import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui
 
 export function SidebarMenu({menu, buttons, open, onClick }) {
 
-    function click() {
-      console.log('click');
+    function click(event) {
+      console.log(event.target);
     }
 
     return (
@@ -14,7 +14,7 @@ export function SidebarMenu({menu, buttons, open, onClick }) {
             key={text} 
             disablePadding 
             sx={{ display: "block" }} 
-            onClick={() => onClick()}>
+            onClick={(event) => click(event)}>
             
             <ListItemButton
               sx={{
