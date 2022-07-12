@@ -62,7 +62,7 @@ export default function Sidebar({ open, toggleMenu }) {
   const theme = useTheme();
   
   const handleClick = (e) => {  
-    console.log(e.target);
+    // console.log(e.target);
   }
   
   return (
@@ -89,7 +89,7 @@ export default function Sidebar({ open, toggleMenu }) {
         open={open}
         menu={["Головна", "IP адреси",]}
         buttons={[<HomeIcon />, <StorageIcon/>]}
-        onClick={handleClick}
+        //onClick={handleClick}
       />
 
       {/* разделитель */}
