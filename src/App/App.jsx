@@ -1,26 +1,24 @@
 import React from "react";
-import Table from "../app-table/table";
-import Box from "@mui/material/Box";
-import AppHeader from "../app-layout/app-header/app-header";
-import Sidebar from "../app-layout/app-sidebar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import "./app.css";
+import Box from "@mui/material/Box";
 
-import EditForm from "../app-table/edit-form/edit-form";
-import AppBreadcrumbs from "../breadcrumbs/breadcrumbs";
+import Table from "../components/Table";
+import AppHeader from "../components/Header";
+import Sidebar from "../components/Sidebar";
+import EditForm from "../components/EditForm";
+import AppBreadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 
 export default function App() {
   const [open, setOpen] = React.useState(false);
 
-  // Открыть/Закрыть боковое меню
+  // Toggle sidebar
   function handleDrawerToggle() {
     setOpen(!open);
   }
 
   return (
     <Box sx={{ display: "flex" }}>
-      {/* <CssBaseline /> */}
 
       {/* Заголовок сайта (передаю пременную в потомка вместе с колбек функцией) */}
       <AppHeader open={open} toggleMenu={handleDrawerToggle} />

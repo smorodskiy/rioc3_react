@@ -11,7 +11,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import StorageIcon from '@mui/icons-material/Storage';
 import MuiDrawer from "@mui/material/Drawer";
 
-import { SidebarMenu } from "./sidebar-menu";
+import { SidebarMenu } from "./SidebarMenu";
 
 
 const drawerWidth = 240;

@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
-import AppBreadcrumbs from "../../breadcrumbs/breadcrumbs";
+import AppBreadcrumbs from "../Breadcrumbs/Breadcrumbs";
 
 const InputField = styled(TextField)({
   "& input:valid + fieldset": {

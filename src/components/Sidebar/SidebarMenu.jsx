@@ -3,15 +3,15 @@ import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui
 export function SidebarMenu({menu, buttons, open, onClick }) {
 
     function click(event) {
-      console.log(event.target);
+      console.log(event.currentTarget);
     }
 
     return (
       <List>
-        {menu.map((text, index) => (
+        {menu.map((itemCaption, index) => (
             
           <ListItem 
-            key={text} 
+            key={itemCaption} 
             disablePadding 
             sx={{ display: "block" }} 
             onClick={(event) => click(event)}>
@@ -32,8 +32,9 @@ export function SidebarMenu({menu, buttons, open, onClick }) {
               >
                 {buttons[index]}
               </ListItemIcon>
+
               <ListItemText 
-                primary={text} 
+                primary={itemCaption} 
                 sx={{ opacity: open ? 1 : 0 }} 
               />
             </ListItemButton>

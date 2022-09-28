@@ -1,20 +1,18 @@
-// import * as React from "react";
-
-import "./table-content.css";
-
 import * as React from "react";
+import { Link } from "react-router-dom";
+
 import Box from "@mui/material/Box";
 import Table from "@mui/material/Table";
 import TableContainer from "@mui/material/TableContainer";
 import TablePagination from "@mui/material/TablePagination";
 import Paper from "@mui/material/Paper";
-import EnhancedTableToolbar from "./table-toolbar"
-import EnhancedTableHead from "./table-header";
+
+import EnhancedTableToolbar from "./toolbar"
+import EnhancedTableHead from "./header";
+import AppBreadcrumbs from "../Breadcrumbs/Breadcrumbs";
+import TableContent from "./content";
 
 import {rows} from '../../fake-base'
-import AppBreadcrumbs from "../breadcrumbs/breadcrumbs";
-import TableContent from "./table-content";
-import { Link } from "react-router-dom";
 
 
 // Основной компонент
