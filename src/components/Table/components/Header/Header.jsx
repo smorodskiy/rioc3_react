@@ -7,7 +7,7 @@ import Box from "@mui/material/Box";
 import TableRow from "@mui/material/TableRow";
 import Checkbox from "@mui/material/Checkbox";
 
-import { rows } from "../../fake-base";
+import { rows } from "../../../../fake-base";
 
 // Ячейки в заголовке таблицы(массив из объектов)
 const headCells = [
